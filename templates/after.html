@@ -1,0 +1,58 @@
+
+<html>
+    <head>
+        <style>
+        body {
+            margin: 0; 
+            padding: 0;
+            background: none; 
+        }
+        img {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            z-index: -1; 
+        }
+        .w{
+            color: white;
+        }
+        .w1{
+            color: white;
+            position: fixed; 
+            bottom: 50px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            font-size: 15px; 
+            color: white; 
+            margin-bottom: 20px; 
+            margin-left: 20px; 
+        }
+        .specific-text {
+            position: fixed; 
+            top: 120px;
+            left: 70%; 
+            transform: translateX(-50%); 
+            font-size: 30px; 
+            color: white; 
+            margin-top: 20px; 
+            margin-left: 20px; 
+        }
+        </style>
+    </head>
+    <body>
+        <img src="static\image1.jpg" alt="Background Image">
+        <center>
+            <br>
+            <h1 class="w"> Prediction using {{model}}</h1>
+        {%if data == 0%}
+        <h1 class="specific-text">Fake Tweet</h1>
+        {%else%}
+        <h1 class="specific-text">Real Tweet</h1>
+        {%endif%}
+        <br><br>
+        <a href="/"><b class="w1">go back to home page</b></a>
+        </center>
+    </body>
+</html>

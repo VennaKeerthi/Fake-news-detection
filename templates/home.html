@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0; 
+            padding: 0; 
+            background: none; 
+        }
+
+        
+        img {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            z-index: -1; 
+        }
+        .winput {
+            color: white; 
+            font-size: 25px;
+        }
+        footer {
+            position: fixed; 
+            width: 100%; 
+            bottom: 50px; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        
+        ::placeholder {
+            font-size: 15px; 
+        }
+
+        
+        input[type="text"] {
+            padding: 2px 4px; 
+            border-radius: 10px;
+        }
+
+        select{
+            padding: 2px 4px; 
+            border-radius: 10px;
+        }
+
+        input[type="button"], input[type="submit"] {
+            padding: 10px 20px; 
+            font-size: 18px; 
+            border: none;
+            background-color: white;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+       
+    </style>
+    <script>
+        function generateRandomValues() {
+            var user_id = generateRandomUserID(6); 
+            var retweet_count = generateRandomNumber(1, 3); 
+            var tweet_length = generateRandomNumber(10, 50); 
+            var tweet = generateRandomTweet(tweet_length); 
+            document.getElementById("user_id").value = user_id;
+            document.getElementById("retweet_count").value = retweet_count;
+            document.getElementById("tweet").value = tweet;
+        }
+
+        function generateRandomUserID(length) {
+            var min = Math.pow(10, length - 1);
+            var max = Math.pow(10, length) - 1;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+
+        function generateRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function generateRandomTweet(length) {
+            var characters = 'abcdefghijklmnopqrstuvwxyz ';
+            var result = '';
+            for (var i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+    </script>
+        
+</head>
+<body>
+    <img src="static\bg1.jpg" alt="Background Image">
+        <center>
+            <footer>
+                <form method="POST" action="{{ url_for('home') }}">
+                    <b class="winput">User ID : </b><input type="text" id="user_id" name="a" placeholder="Random User ID"><br><br>
+                    <b class="winput">Retweet Count : </b><input type="text" id="retweet_count" name="b" placeholder="Random Retweet Count"><br><br>
+                    <b class="winput">Tweet : </b><input type="text" name="c" placeholder="Enter Tweet"><br><br>
+                    <b class="winput">Model : </b>
+                    <select name="d">
+                        <option value="" disabled selected>Select Model</option>
+                        <option value="rf">Random Forest</option>
+                        <option value="nb">Naive Bayes</option>
+                        <option value="svm">Support Vector Machine</option>
+                        <option value="dt">Decision Tree</option>
+                        <option value="knn">K-Nearest Neighbour</option>
+                        <option value="gbm">Gradient Boost Machine</option>
+                        <option value="ab">Ada Boost</option>
+                        <option value="mlp">Mutli Layer Perceptron</option>
+                        <option value="lr">Logistic Regression</option>
+                        
+                    </select><br><br><br>
+                    <input type="button" value="Generate" onclick="generateRandomValues()">&emsp;&emsp;
+                    <input type="submit" value="Predict">
+                </form>
+            </footer>
+        </center>
+        
+</body>
+</html>
